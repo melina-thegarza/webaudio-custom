@@ -1,10 +1,8 @@
 
 var audioCtx;
-var osc;
-const playButton =  document.getElementById("bubble-sound");
 
 function initAudio() {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)
+    audioCtx = new (window.AudioContext || window.webkitAudioContext);
     // brown noise
     var bufferSize = 10 * audioCtx.sampleRate,
     noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate),
@@ -69,17 +67,21 @@ function initAudio() {
 
 }
 
-playButton.addEventListener('click', function () {
+window.addEventListener('load', () => {
+    document.getElementById("bubble-sound").addEventListener("click", () => {
+        console.log("HELO")
+    
+        if (!audioCtx) {
+            initAudio();
+            return;
+        }
+        else if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        else if (audioCtx.state === 'running') {
+            audioCtx.suspend();
+        }
+        
 
-    if (!audioCtx) {
-        initAudio();
-        return;
-    }
-    else if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-    }
-    else if (audioCtx.state === 'running') {
-        audioCtx.suspend();
-    }
-
-}, false);
+    });
+  })
