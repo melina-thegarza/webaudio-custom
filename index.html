@@ -4,6 +4,15 @@
 <head>
   <meta charset="utf‐8">
   <title>Lab 3</title>
+  <style>
+    img{
+      width: 700px;
+      height:500px
+    }
+    div, h1{
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -19,6 +28,59 @@
 
  <div>
     <h3>the writeup</h3>
+    <p><span style="font-weight: bold;">Sound</span><br>I attempted to recreate the call of a bird, drawing inspiration from Chapter 51 of "Designing Sound" titled "Practical 28 Birds." 
+      <br>This chapter provides detailed insights into the synthesis of bird calls and served as the main inspiration for my design.</p>
+
+    <p><span style="font-weight: bold";>Audio Signal Flow graph</span><br><img src="./flow_graph.png"></p>
+
+    <p><span style="font-weight: bold;">Key Parts of the Code: </span>
+    <div>
+      AM Synthesis
+    </div>
+    <div>
+        FM Synthesis
+    </div>
+    <div>ADSR Envelope</div>
+    </p>
+
+
+    <p><span style="font-weight: bold;">Process & Experience: </span>
+    <div>
+      The main foundation of the sound is combining AM and FM synthesis to correct a rich blend. <br>
+      Here are some quotes from "Designing Sound" that guided my process:<br>
+      -"One attempt at understanding the sound of the syrinx focuses on the FM/AM nature"
+      ...."yields excellent results when constructed carefully"<br>
+      -"Let's suppose we could simplify birdcall to one envelope per parameter"
+      <br>
+      <br>
+      So how do AM/FM synthesis fit together: By combining both synthesis techniques, you can capture the intricate interplay between amplitude and 
+      frequency variations present in natural bird calls. AM synthesis enriches the recreation by adding variations in loudness, while FM synthesis 
+      adds the complex frequency modulations that define the unique tonal characteristics of different bird species. Speficically for FM synthesis,
+      birds produce calls with distinctive pitch variations, and FM synthesis is well-suited for replicating these frequency modulations accurately.
+      And for AM synthesis allows you to mimic the dynamic changes in volume that occur within a bird call, adding realism and depth to the recreation,
+      as birds often produce calls with varying levels of amplitude to convey different messages or emotions, such as alertness, aggression, or mating calls.
+      <br>
+      <br>
+      ADSR Envelopes: As suggested every parameter follows a ADSR envelope, thus I added more gain nodes to help facilitate this process.
+      <br> For example, the finalGain GainNode helps control the main sound envelope and the extra gainNode in FM synthesis, carrierGain, helps create
+      a nice envelope for the carrier oscillator in FM synthesis.
+    </div>
+    <br>
+    <div>
+    Challenges: The hardest part of the experience was tuning the values for each ADSR envelope, until a sound that somewhat resembled a bird call was produced.
+    Also fine tuning the frequency value of the FM synthesis carrier oscillator, making it a high frequency of 2400 hertz to help  help accurately reproduce 
+    these higher-pitched elements of a bird call.
+    </div>
+    
+    </p>
+
+
+
+    <p><span style="font-weight: bold;">Resources: </span><br>
+      Andy Farnell. (2010). *Designing Sound*. The MIT Press.<br>
+
+      Stein, R. C. (1968). Modulation in bird sounds. *The Auk*, *85*(2), 229–243. https://doi.org/10.2307/4083583</p>
+
  </div>
 
 
