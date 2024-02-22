@@ -130,19 +130,16 @@ class AMSynthesis{
     constructor(customAudioCtx){
         // oscillator
         this.modulatorOsc = customAudioCtx.createOscillator();
-        this.carrier = customAudioCtx.createOscillator();
         // gain nodes
         this.oscGain = customAudioCtx.createGain();
         this.modulatorGain = customAudioCtx.createGain();
         // connect them
         this.modulatorOsc.connect(this.oscGain).connect(this.modulatorGain.gain);
-        this.carrier.connect(this.modulatorGain);
 
-        this.carrier.frequency.value = 440;
         
     }
     start(time){
-        this.modulatorOsc.start(time)
+        this.modulatorOsc.start(time);
     }
     // connect to final gain node
     connect(destination){

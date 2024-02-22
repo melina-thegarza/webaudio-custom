@@ -12,6 +12,10 @@
     div, h1{
       text-align: center;
     }
+    .small-img{
+      width: 500px;
+      height:300px
+    }
   </style>
 </head>
 
@@ -31,11 +35,18 @@
     <p><span style="font-weight: bold;">Sound</span><br>I attempted to recreate the call of a bird, drawing inspiration from Chapter 51 of "Designing Sound" titled "Practical 28 Birds." 
       <br>This chapter provides detailed insights into the synthesis of bird calls and served as the main inspiration for my design.</p>
 
-    <p><span style="font-weight: bold";>Audio Signal Flow graph</span><br><img src="./flow_graph.png"></p>
+    <p><span style="font-weight: bold";>Audio Signal Flow graph</span><br><img src="./flow_graph.png">
+      <br>
+      The main idea for combining both the FM and AM synthesis components is to use the output of the FM synthesis object as the carrier frequency for AM synthesis.</p>
 
     <p><span style="font-weight: bold;">Key Parts of the Code: </span>
+      <div>
+        Main flow process: (1) Create AM/FM synthesis objects, (2) Connect AM/FM/AudioDestination, (3) Create envelopes for FM/AM frequencies and gain,
+        (4) Start oscillators and trigger ADSR envelopes
+      </div>
     <div>
-      AM Synthesis
+      <span style="font-weight: bold";>AM Synthesis</span><br>
+      <img class="small-img" src="./AMsynthesis.png">
     </div>
     <div>
         FM Synthesis
