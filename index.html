@@ -35,9 +35,10 @@
     <p><span style="font-weight: bold;">Sound</span><br>I attempted to recreate the call of a bird, drawing inspiration from Chapter 51 of "Designing Sound" titled "Practical 28 Birds." 
       <br>This chapter provides detailed insights into the synthesis of bird calls and served as the main inspiration for my design.</p>
 
-    <p><span style="font-weight: bold";>Audio Signal Flow graph</span><br><img src="./flow_graph.png">
+    <p><span style="font-weight: bold";>Audio Signal Flow graph</span><br>The main idea for combining both the FM and AM synthesis components is to use the output of the FM synthesis object as the carrier frequency for AM synthesis.
+      <img src="./flow_graph.png">
       <br>
-      The main idea for combining both the FM and AM synthesis components is to use the output of the FM synthesis object as the carrier frequency for AM synthesis.</p>
+      </p>
 
     <p><span style="font-weight: bold;">Key Parts of the Code: </span>
       <div>
@@ -72,9 +73,8 @@
       as birds often produce calls with varying levels of amplitude to convey different messages or emotions, such as alertness, aggression, or mating calls.
       <br>
       <br>
-      ADSR Envelopes: As suggested every parameter follows a ADSR envelope, thus I added more gain nodes to help facilitate this process.
-      <br> For example, the finalGain GainNode helps control the main sound envelope and the extra gainNode in FM synthesis, carrierGain, helps create
-      a nice envelope for the carrier oscillator in FM synthesis.
+      ADSR Envelopes: Following the recommended practice, each parameter adheres to an ADSR envelope. Consequently, both the oscillators and gain nodes in both AM/FM synthesis are governed by an ADSR envelope. 
+      <br>Additionally, there is an envelope applied to the main gain node to regulate the overall output sound.
     </div>
     <br>
     <div>

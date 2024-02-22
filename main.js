@@ -155,13 +155,9 @@ class FMSynthesis{
          this.modulatorOsc = customAudioCtx.createOscillator();
          // gain nodes
          this.modulationIndex = customAudioCtx.createGain();
-         this.carrierGain = customAudioCtx.createGain();
          // connect them
          this.modulatorOsc.connect(this.modulationIndex);
-         this.modulationIndex.connect(this.carrierGain);
-         this.carrierGain.connect(this.carrierOsc.frequency);
-
-         this.carrierGain.gain.value = 100;
+         this.modulationIndex.connect(this.carrierOsc.frequency);
 
     }
     start(time){
