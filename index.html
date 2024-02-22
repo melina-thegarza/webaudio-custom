@@ -36,6 +36,7 @@
       <br>This chapter provides detailed insights into the synthesis of bird calls and served as the main inspiration for my design.</p>
 
     <p><span style="font-weight: bold";>Audio Signal Flow graph</span><br>The main idea for combining both the FM and AM synthesis components is to use the output of the FM synthesis object as the carrier frequency for AM synthesis.
+      <br>
       <img src="./flow_graph.png">
       <br>
       </p>
@@ -48,16 +49,34 @@
       </div>
     <div>
       <span style="font-weight: bold";>AM Synthesis</span><br>
+      <div>
+        Modeled directly from the example code given from the course lecture slides, only difference is that the carrier oscillator comes from 
+        the FM synthesis object, combining both the AM and FM synthesis processes.
+      </div>
       <img class="small-img" src="./AMsynthesis.png">
     </div>
     <div>
       <span style="font-weight: bold;">FM Synthesis<br></span>
+      <div>
+        Modeled directly from the example code given from the course lecture slides.
+      </div>
       <img class="small-img" src="./FMsynthesis.png">
     </div>
     <div>
       <span style="font-weight: bold;">ADSR Envelope<br></span>
+      <div>Here's a break down of the class: the constructor initializes the envelope parameters -> 'customAudioCtx' represents the custom AudioContext to use,
+        'parameter' represents the audio parameter(e.g., gain) to which the envelope will be applied, 'attack', 'decay' represent the duration of the attack and decay
+       phases, and lastly, 'max' represents the maximum value the parameter will reach during the attack phase. We also have a 'sampleRate' which represents the 
+      inverse of the audio sample rate, used for precise timing of calculations.</div>
+      </div>
+      <div>
+        The 'start' method triggers the envelope: it retreives the current time from the audio context, it cancels any previously scheduled parameter changes. and then
+        sets the parameter's initial value to 0 at the current time. Then for the actual envelope, it schedules a exponential ramp to the 'max' value over a duration 
+        defined by 'attack'. It schedules another exponential ramp from the 'max' value back to 0 over a duration defined by the 'decay', starting 'attack' + 'sampleRate' seconds
+        after the initial ramp.
+      </div>
       <img class="small-img" src="./ADSREnvelope.png">
-    </div>
+     
     </p>
 
 
